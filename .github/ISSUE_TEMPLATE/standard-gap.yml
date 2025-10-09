@@ -1,0 +1,121 @@
+name: 🚫 Standard Gap
+description: The standard is missing a required capability that blocks your use case
+title: "[GAP] "
+labels: ["type: standard-gap"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Standard Gap - Missing Capability
+
+        Use this template when the QR+ standard **cannot** support a required capability for your use case.
+
+        **Examples of Standard Gaps:**
+        - "No way to express partial refunds"
+        - "Cannot represent multi-currency transactions"
+        - "No mechanism for recurring payment authorization"
+        - "Missing required field for VAT compliance"
+
+        **Not a Standard Gap?** If workarounds exist, use **Enhancement** instead.
+
+        **Not sure?** Start a [Discussion](https://github.com/qr-plus-workgroup/qr-plus/discussions/new?category=q-a) and we'll help you diagnose.
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: What are you trying to accomplish? Describe your business scenario.
+      placeholder: |
+        Example: We need to process subscription payments where the payer authorizes recurring charges for a specific amount on a monthly basis.
+    validations:
+      required: true
+
+  - type: textarea
+    id: missing-capability
+    attributes:
+      label: What's Missing?
+      description: What capability does the standard lack? Be specific about what you need.
+      placeholder: |
+        Example: The standard has no way to indicate that a payment authorization is for recurring use. There's no field to specify:
+        - Recurrence frequency (monthly, weekly, etc.)
+        - Authorization expiry date
+        - Maximum per-transaction amount
+    validations:
+      required: true
+
+  - type: textarea
+    id: workarounds-attempted
+    attributes:
+      label: Workarounds Attempted
+      description: Have you tried any workarounds? Why don't they work?
+      placeholder: |
+        Example: Tried using memo field for metadata, but it's not structured and receivers can't reliably parse it. Tried external coordination, but violates standard's goal of self-contained paylinks.
+
+  - type: dropdown
+    id: impact
+    attributes:
+      label: Impact on Your Implementation
+      description: How does this gap affect your ability to use QR+?
+      options:
+        - "Completely blocks implementation"
+        - "Blocks significant use case"
+        - "Limits functionality"
+        - "Other (describe in additional context)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec-reference
+    attributes:
+      label: Relevant Spec Sections
+      description: If you've reviewed the specification, which sections relate to this gap?
+      placeholder: |
+        Example: Reviewed section 4.2 (Payment Details) and section 5.1 (Authorization) - neither supports recurring payments.
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution (Optional)
+      description: Do you have ideas for how the standard could address this gap?
+      placeholder: |
+        Example: Could add optional fields to payment authorization:
+        - `recurrence`: { frequency, startDate, endDate }
+        - `recurringMaxAmount`: Maximum per transaction
+        - `recurringTotalAuth`: Total authorization across all transactions
+
+  - type: input
+    id: spec-version
+    attributes:
+      label: Spec Version
+      description: Which version of the QR+ specification are you referencing?
+      placeholder: "e.g., 1.2, 1.3.x (draft)"
+    validations:
+      required: true
+
+  - type: input
+    id: sandbox-version
+    attributes:
+      label: Sandbox Version (if testing)
+      description: If you're testing with the sandbox, which version?
+      placeholder: "e.g., 1.2.3"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information, industry standards, regulatory requirements, etc.
+      placeholder: |
+        Example: This is required for PCI-DSS compliance in recurring billing scenarios. Similar standards (X, Y) support this via...
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Before submitting, please confirm:
+      options:
+        - label: I searched existing issues and discussions for duplicates
+          required: true
+        - label: This blocks my use case (no workarounds exist)
+          required: true
+        - label: I've provided specific details about what's missing
+          required: true

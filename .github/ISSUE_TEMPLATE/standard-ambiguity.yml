@@ -1,0 +1,121 @@
+name: ❓ Standard Ambiguity
+description: The specification is unclear, contradictory, or open to multiple interpretations
+title: "[AMBIGUITY] "
+labels: ["type: standard-ambiguity"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Standard Ambiguity - Unclear Specification
+
+        Use this template when the QR+ specification is unclear, contradictory, or allows multiple interpretations.
+
+        **Examples of Standard Ambiguity:**
+        - "Section A says field is required, Section B says optional"
+        - "Not clear whether timestamps should be UTC or local time"
+        - "Spec doesn't specify what happens if X condition occurs"
+        - "Multiple valid interpretations of this rule"
+
+        **Not sure if it's ambiguous?** Start a [Discussion](https://github.com/qr-plus-workgroup/qr-plus/discussions/new?category=q-a) and we'll help clarify.
+
+  - type: textarea
+    id: ambiguous-section
+    attributes:
+      label: Ambiguous Specification Section
+      description: Which part of the specification is unclear? Include section numbers and quotes if possible.
+      placeholder: |
+        Example: Section 4.2.3 states "Payment amount MUST be specified in the smallest currency unit" but doesn't clarify how to handle currencies without sub-units (like JPY).
+    validations:
+      required: true
+
+  - type: textarea
+    id: interpretations
+    attributes:
+      label: Possible Interpretations
+      description: What are the different ways this could be interpreted?
+      placeholder: |
+        Example:
+        **Interpretation 1:** For JPY, "smallest unit" is 1 yen, so amount 1000 = ¥1000
+        **Interpretation 2:** All amounts should include two decimal places (1000 = ¥10.00) regardless of currency
+        **Interpretation 3:** Currencies without sub-units should be handled differently (special case)
+    validations:
+      required: true
+
+  - type: textarea
+    id: contradiction
+    attributes:
+      label: Contradiction or Conflict (if applicable)
+      description: If different parts of the spec conflict, describe the contradiction.
+      placeholder: |
+        Example:
+        - Section 3.1 says: "Merchant ID is required"
+        - Section 5.2 example shows paylink without Merchant ID
+        - Appendix A schema marks Merchant ID as optional
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact on Implementation
+      description: How does this ambiguity affect your implementation?
+      placeholder: |
+        Example: Different implementers could make different choices, leading to interoperability issues. We need clarification before proceeding to ensure we're compliant.
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Your Use Case Context
+      description: What are you trying to do when you encountered this ambiguity?
+      placeholder: |
+        Example: Implementing paylink generation for e-commerce checkout supporting multiple currencies including JPY, KRW, and other zero-decimal currencies.
+
+  - type: textarea
+    id: suggested-clarification
+    attributes:
+      label: Suggested Clarification (Optional)
+      description: How do you think the specification should be clarified?
+      placeholder: |
+        Example: Spec should explicitly state:
+        "For currencies without sub-units (ISO 4217 decimal places = 0), the amount represents the base unit. For example, JPY amount 1000 = ¥1000."
+
+  - type: input
+    id: spec-version
+    attributes:
+      label: Spec Version
+      description: Which version of the QR+ specification are you reviewing?
+      placeholder: "e.g., 1.2, 1.3.x (draft)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec-references
+    attributes:
+      label: Relevant Spec References
+      description: List all sections, page numbers, or examples that relate to this ambiguity
+      placeholder: |
+        Example:
+        - Section 4.2.3 (page 15) - Amount formatting
+        - Section 4.2.5 (page 16) - Currency codes
+        - Appendix C Example 3 - Shows zero-decimal currency
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other relevant information, industry standards, or precedents from other specs
+      placeholder: |
+        Example: ISO 20022 handles this by including a decimal places indicator with each amount. Most payment APIs (Stripe, Adyen) use smallest unit but document handling of zero-decimal currencies explicitly.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Before submitting, please confirm:
+      options:
+        - label: I searched existing issues and discussions for similar clarifications
+          required: true
+        - label: I've provided specific spec section references
+          required: true
+        - label: I've described multiple possible interpretations
+          required: true

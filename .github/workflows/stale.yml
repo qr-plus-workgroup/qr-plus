@@ -1,0 +1,53 @@
+name: Mark Stale Issues
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Run weekly on Sundays at midnight UTC
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Issues
+          days-before-issue-stale: 90
+          days-before-issue-close: -1 # Never auto-close, only mark as stale
+          stale-issue-label: 'status: stale'
+          exempt-issue-labels: 'status: confirmed,priority: high,status: in-progress'
+          stale-issue-message: |
+            This issue has been automatically marked as stale because it has not had activity in the last 90 days.
+
+            **This does NOT mean the issue is being closed!** We just want to check if it's still relevant.
+
+            Please respond if:
+            - This issue is still affecting you
+            - You have additional information to add
+            - You're still interested in this being addressed
+
+            If there's no response, the issue will remain open but marked as stale. A moderator will review it periodically.
+
+          close-issue-message: '' # Don't close issues automatically
+
+          # Pull Requests
+          days-before-pr-stale: 60
+          days-before-pr-close: -1 # Never auto-close
+          stale-pr-label: 'status: stale'
+          stale-pr-message: |
+            This pull request has been automatically marked as stale because it has not had activity in the last 60 days.
+
+            Please respond if you're still working on this or if it's ready for review.
+
+          close-pr-message: '' # Don't close PRs automatically
+
+          # Operations
+          operations-per-run: 30
+          remove-stale-when-updated: true
+          ascending: false # Process newest first

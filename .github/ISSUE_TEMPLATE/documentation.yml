@@ -1,0 +1,154 @@
+name: 📚 Documentation Issue
+description: Documentation is unclear, incomplete, incorrect, or missing
+title: "[DOCS] "
+labels: ["type: documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Documentation Issue
+
+        Use this template for problems with documentation, examples, guides, or API reference material.
+
+        **Examples:**
+        - Missing example for complex scenario
+        - Typo or incorrect information
+        - Unclear explanation
+        - Broken links
+        - Out-of-date content
+
+        **Note:** For specification clarity issues, use [Standard Ambiguity](https://github.com/qr-plus-workgroup/qr-plus/issues/new?template=standard-ambiguity.yml) instead.
+
+  - type: dropdown
+    id: doc-type
+    attributes:
+      label: Documentation Type
+      description: What kind of documentation is affected?
+      options:
+        - "API Reference / Specification"
+        - "Getting Started Guide"
+        - "Examples / Code Samples"
+        - "README / Repository Docs"
+        - "Error Messages / Error Docs"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Documentation Location
+      description: Where is the problematic documentation? Provide links, section numbers, page numbers
+      placeholder: |
+        Example:
+        - Section 4.2 "Payment Details" (page 18)
+        - https://example.com/docs/api-reference#paylinks
+        - README.md line 45
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue Type
+      description: What's wrong with the documentation?
+      options:
+        - "Missing / Incomplete"
+        - "Incorrect / Wrong"
+        - "Unclear / Confusing"
+        - "Out of date"
+        - "Typo / Formatting"
+        - "Broken link"
+        - "Missing example"
+        - "Other"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem Description
+      description: What's wrong? Be specific about what's missing, incorrect, or unclear
+      placeholder: |
+        Example: The API reference shows a `merchantId` field as required, but the example paylink doesn't include it. This is confusing - is it required or optional?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-docs
+    attributes:
+      label: What Should It Say?
+      description: What information should be included or corrected?
+      placeholder: |
+        Example: Documentation should clarify:
+        1. Whether merchantId is required or optional
+        2. Update example to include it if required
+        3. Or explain why example omits it if optional
+    validations:
+      required: true
+
+  - type: textarea
+    id: confusion-caused
+    attributes:
+      label: Impact / Confusion Caused
+      description: How does this documentation issue affect users?
+      placeholder: |
+        Example: New implementers are confused about whether to include merchantId. Some are getting validation errors, others succeed without it. Leads to trial-and-error implementation.
+    validations:
+      required: false
+
+  - type: textarea
+    id: suggested-fix
+    attributes:
+      label: Suggested Fix (Optional)
+      description: Do you have specific text or examples to suggest?
+      placeholder: |
+        Example suggested text:
+        "The `merchantId` field is required for all paylinks. Example:
+        ```json
+        {
+          \"merchantId\": \"merchant-123\",
+          \"amount\": 10000,
+          \"currency\": \"ZAR\"
+        }
+        ```"
+
+  - type: input
+    id: spec-version
+    attributes:
+      label: Spec/Documentation Version
+      description: Which version of the documentation are you viewing?
+      placeholder: "e.g., 1.2, latest"
+    validations:
+      required: true
+
+  - type: textarea
+    id: related-sections
+    attributes:
+      label: Related Sections (Optional)
+      description: Are there other related sections that might need updating?
+      placeholder: |
+        Example: If we fix this, we should also update:
+        - Getting Started Guide (section 2)
+        - Error reference (error code MISSING_MERCHANT_ID)
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or Examples (Optional)
+      description: Include screenshots, quotes, or examples showing the issue
+      placeholder: |
+        Paste screenshots or quote problematic text here
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Before submitting, please confirm:
+      options:
+        - label: I searched existing issues for similar documentation problems
+          required: true
+        - label: I've provided the specific location of the issue
+          required: true
+        - label: I've described what should be corrected or added
+          required: true

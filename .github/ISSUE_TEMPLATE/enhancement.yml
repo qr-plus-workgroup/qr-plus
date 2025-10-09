@@ -1,0 +1,151 @@
+name: ✨ Enhancement
+description: Suggest a nice-to-have improvement to the standard (workarounds exist)
+title: "[ENHANCEMENT] "
+labels: ["type: enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Enhancement - Nice-to-Have Improvement
+
+        Use this template for suggestions that would improve the standard but **don't block your use case**.
+
+        **Examples of Enhancements:**
+        - "Shorthand notation would simplify common patterns"
+        - "Optional cache hint could improve performance"
+        - "Convenience field would avoid recalculation"
+        - "Better error structure would ease debugging"
+
+        **Key Question:** Can you implement your use case without this?
+        - **YES** → This is an Enhancement ✅
+        - **NO** → Use [Standard Gap](https://github.com/qr-plus-workgroup/qr-plus/issues/new?template=standard-gap.yml) instead
+
+        **Not sure?** Start a [Discussion](https://github.com/qr-plus-workgroup/qr-plus/discussions/new?category=q-a) and we'll help.
+
+  - type: textarea
+    id: current-behavior
+    attributes:
+      label: Current Behavior / Limitation
+      description: What's the current situation? What could be better?
+      placeholder: |
+        Example: Currently, to display a human-readable payment purpose, we have to parse and format structured payment details fields. The paylink contains all the data but no single "display string" field.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-enhancement
+    attributes:
+      label: Proposed Enhancement
+      description: What improvement are you suggesting?
+      placeholder: |
+        Example: Add an optional `displayPurpose` field that provides a pre-formatted, human-readable description of the payment purpose (e.g., "Invoice #12345 - Office Supplies").
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      description: What are the advantages of this enhancement?
+      placeholder: |
+        Example:
+        - **Developer experience:** Simpler to display to end users
+        - **Consistency:** All implementers show the same description
+        - **Localization:** Could support multiple languages
+        - **Reduced errors:** No need to parse/format, less chance of mistakes
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Current Workaround
+      description: How are you handling this today? Why is it not ideal?
+      placeholder: |
+        Example: We parse payment details JSON, extract relevant fields, and format them ourselves. This works but:
+        - Requires custom formatting logic in every implementation
+        - Different implementers may format differently
+        - Parsing is error-prone
+        - Adds implementation complexity
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case Context
+      description: What scenario would benefit from this enhancement?
+      placeholder: |
+        Example: Mobile wallet app needs to show users a clear, concise description of what they're paying for before confirming. Currently requires parsing and custom formatting.
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this enhancement to you?
+      options:
+        - "High - Would significantly improve our implementation"
+        - "Medium - Useful but not urgent"
+        - "Low - Nice to have"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Are there other ways this could be addressed?
+      placeholder: |
+        Example:
+        - **Alt 1:** Standardize formatting rules in spec (all implementers format the same way)
+        - **Alt 2:** Provide formatting library/reference implementation
+        - **Alt 3:** Leave as-is (current workaround acceptable)
+
+  - type: textarea
+    id: implementation-notes
+    attributes:
+      label: Implementation Notes (Optional)
+      description: Technical details, suggestions for how this could be implemented
+      placeholder: |
+        Example: Could add to paylink schema:
+        ```json
+        {
+          "displayPurpose": {
+            "default": "Invoice #12345",
+            "localized": {
+              "en": "Invoice #12345 - Office Supplies",
+              "af": "Faktuur #12345 - Kantoorbenodigdhede"
+            }
+          }
+        }
+        ```
+
+  - type: input
+    id: spec-version
+    attributes:
+      label: Spec Version
+      description: Which version are you working with?
+      placeholder: "e.g., 1.2, 1.3.x (draft)"
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References (Optional)
+      description: Similar features in other standards, relevant articles, industry practices
+      placeholder: |
+        Example: ISO 20022 payment messages include both structured data and an "unstructured remittance information" field for display purposes.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Before submitting, please confirm:
+      options:
+        - label: I searched existing issues and discussions for similar suggestions
+          required: true
+        - label: I can implement my use case with current workarounds (not blocking)
+          required: true
+        - label: I've described the benefits clearly
+          required: true

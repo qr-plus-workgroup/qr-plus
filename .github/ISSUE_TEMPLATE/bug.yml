@@ -1,0 +1,182 @@
+name: 🐛 Bug Report
+description: Sandbox implementation doesn't match the QR+ specification
+title: "[BUG] "
+labels: ["type: bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug Report - Implementation Issue
+
+        Use this template when the sandbox implementation behaves differently than the QR+ specification describes.
+
+        **Examples of Bugs:**
+        - "API returns 400 error but spec says it should return 422"
+        - "Field validation is too strict compared to spec"
+        - "Response format doesn't match spec schema"
+        - "Sandbox accepts invalid data that spec says should be rejected"
+
+        **Not a bug?**
+        - If the **spec is missing something** → Use [Standard Gap](https://github.com/qr-plus-workgroup/qr-plus/issues/new?template=standard-gap.yml)
+        - If the **spec is unclear** → Use [Standard Ambiguity](https://github.com/qr-plus-workgroup/qr-plus/issues/new?template=standard-ambiguity.yml)
+        - If **you're not sure** → Start a [Discussion](https://github.com/qr-plus-workgroup/qr-plus/discussions/new?category=troubleshooting)
+
+  - type: input
+    id: sandbox-version
+    attributes:
+      label: Sandbox Version
+      description: Which version of the sandbox are you testing?
+      placeholder: "e.g., 1.2.3"
+    validations:
+      required: true
+
+  - type: input
+    id: spec-version
+    attributes:
+      label: Spec Version
+      description: Which version of the specification does the sandbox claim to implement?
+      placeholder: "e.g., 1.2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior (According to Spec)
+      description: What should happen according to the QR+ specification? Include spec section reference.
+      placeholder: |
+        Example: According to spec section 5.2.1, when amount exceeds 1,000,000, the API should return HTTP 422 with error code "AMOUNT_TOO_LARGE".
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior (What Happens)
+      description: What actually happens in the sandbox?
+      placeholder: |
+        Example: Sandbox returns HTTP 400 with error message "Bad Request" and no error code.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the bug
+      placeholder: |
+        1. Create paylink with amount = 1500000
+        2. Send POST to /api/paylinks
+        3. Observe error response
+    validations:
+      required: true
+
+  - type: textarea
+    id: request-example
+    attributes:
+      label: Request Example
+      description: Sample request that triggers the bug (sanitize sensitive data)
+      placeholder: |
+        ```json
+        POST /api/paylinks
+        Content-Type: application/json
+
+        {
+          "amount": 1500000,
+          "currency": "ZAR",
+          "merchantId": "test-merchant"
+        }
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: response-example
+    attributes:
+      label: Response Example
+      description: Actual response from sandbox (sanitize sensitive data)
+      placeholder: |
+        ```json
+        HTTP/1.1 400 Bad Request
+        Content-Type: application/json
+
+        {
+          "error": "Bad Request"
+        }
+        ```
+    validations:
+      required: true
+
+  - type: textarea
+    id: spec-reference
+    attributes:
+      label: Specification Reference
+      description: Which section(s) of the spec define the expected behavior?
+      placeholder: |
+        Example:
+        - Section 5.2.1 "Amount Validation" (page 23)
+        - Section 7.3 "Error Responses" (page 45)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - "Critical - Blocks testing"
+        - "High - Major functionality affected"
+        - "Medium - Workaround exists"
+        - "Low - Minor issue"
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment Details
+      description: Testing environment information
+      placeholder: |
+        - OS: macOS 13.2
+        - Client: Postman / curl / custom app
+        - Network: Direct / VPN / Proxy
+        - Any special configuration
+    validations:
+      required: false
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround (if any)
+      description: Have you found a way to work around this bug?
+      placeholder: |
+        Example: For now, we're catching 400 errors and treating them as validation errors, but this doesn't match spec and could mask other 400 errors.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Error logs, screenshots, related issues, etc.
+      placeholder: |
+        - Console logs
+        - Screenshots
+        - Related issues: #123
+        - First noticed in version X.X.X
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Before submitting, please confirm:
+      options:
+        - label: I searched existing issues for duplicates
+          required: true
+        - label: I've tested with the latest sandbox version
+          required: true
+        - label: I've provided spec section references
+          required: true
+        - label: I've included request/response examples
+          required: true
+        - label: I've sanitized any sensitive data
+          required: true

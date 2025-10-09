@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/qr-plus-workgroup/qr-plus/discussions/new?category=q-a
+    about: Get help with implementation questions
+  - name: 🚨 Troubleshooting Help
+    url: https://github.com/qr-plus-workgroup/qr-plus/discussions/new?category=troubleshooting
+    about: "I'm stuck and don't know if it's a bug or my mistake"
+  - name: 📖 Browse Knowledge Base
+    url: https://github.com/qr-plus-workgroup/qr-plus/discussions
+    about: Search past questions and answers

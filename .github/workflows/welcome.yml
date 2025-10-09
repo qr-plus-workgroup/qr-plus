@@ -1,0 +1,63 @@
+name: Welcome First-Time Contributors
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+  discussion:
+    types: [created]
+
+permissions:
+  issues: write
+  pull-requests: write
+  discussions: write
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: |
+            👋 **Welcome to the QR+ Proof of Standard Testing community!**
+
+            Thank you for creating your first issue! We appreciate your contribution to improving the QR+ standard.
+
+            **What happens next?**
+            - A moderator will review your issue within 1 week
+            - We may ask clarifying questions
+            - Your issue will be labeled and added to our project board
+
+            **While you wait:**
+            - 📚 Browse [existing discussions](https://github.com/qr-plus-workgroup/qr-plus/discussions) for similar topics
+            - 📖 Check our [Contributing Guide](https://github.com/qr-plus-workgroup/qr-plus/blob/main/CONTRIBUTING.md)
+            - 💬 Join ongoing discussions to help others
+
+            If you have questions about this issue, feel free to add a comment!
+
+          pr-message: |
+            👋 **Welcome to the QR+ Proof of Standard Testing community!**
+
+            Thank you for your first pull request! We appreciate your contribution.
+
+            **Review process:**
+            - A maintainer will review your PR
+            - We may request changes or ask questions
+            - Once approved, your changes will be merged
+
+            Check our [Contributing Guide](https://github.com/qr-plus-workgroup/qr-plus/blob/main/CONTRIBUTING.md) for more information.
+
+          discussion-message: |
+            👋 **Welcome to the QR+ Proof of Standard Testing community!**
+
+            Thank you for starting a discussion! We're glad to have you here.
+
+            **Tips for great discussions:**
+            - Be specific about your question or topic
+            - Provide context about your use case
+            - Mark helpful answers so others can benefit
+            - Search existing discussions first
+
+            Looking forward to your participation! 🚀

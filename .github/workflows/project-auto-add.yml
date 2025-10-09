@@ -1,0 +1,31 @@
+name: Add Issues to Project Board
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  issues: write
+  repository-projects: write
+
+jobs:
+  add-to-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add issue to project
+        uses: actions/add-to-project@v0.5.0
+        with:
+          project-url: https://github.com/orgs/qr-plus-workgroup/projects/1
+          github-token: ${{ secrets.GH_PROJECT_TOKEN }}
+
+# Note: This workflow requires a GitHub Personal Access Token (classic) with 'repo' and 'project' scopes
+# stored as a repository secret named GH_PROJECT_TOKEN.
+#
+# To set this up:
+# 1. Create a GitHub PAT: Settings > Developer settings > Personal access tokens > Generate new token
+# 2. Select scopes: repo, project
+# 3. Add as repository secret: Repository Settings > Secrets > Actions > New repository secret
+# 4. Name: GH_PROJECT_TOKEN
+# 5. Update the project-url above with your actual project URL after creating the project board
+#
+# Alternative: Use GitHub Projects automation rules in the project settings instead of this workflow
