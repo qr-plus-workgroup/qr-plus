@@ -11,7 +11,7 @@ This document provides complete instructions for setting up the QR+ Proof of Sta
 
 ## Setup Checklist
 
-- [ ] Create GitHub organization
+- [x] Create GitHub organization
 - [ ] Create teams
 - [ ] Create repository
 - [ ] Configure repository settings
@@ -47,37 +47,28 @@ This document provides complete instructions for setting up the QR+ Proof of Sta
 
 ## Step 2: Create Teams
 
-Teams provide granular access control for contributors.
+Teams provide moderation capabilities for the open community.
 
 ### Via GitHub Web UI
 
 1. Go to organization → Teams
-2. Create **"Participants"** team:
-   - **Name:** Participants
-   - **Description:** Community members who can create issues and discussions
-   - **Visibility:** Visible
-   - **Permissions:** Write access to qr-plus repository
-3. Create **"Moderators"** team:
+2. Create **"Moderators"** team:
    - **Name:** Moderators
-   - **Description:** Trusted members who help with triage and admin
+   - **Description:** Trusted members who help with moderation, triage, and admin
    - **Visibility:** Visible
    - **Permissions:** Maintain access to qr-plus repository
 
 ### Via GitHub CLI
 
 ```bash
-# Create Participants team
-gh api orgs/qr-plus-workgroup/teams \
-  -f name="Participants" \
-  -f description="Community members who can create issues and discussions" \
-  -f privacy="closed"
-
 # Create Moderators team
 gh api orgs/qr-plus-workgroup/teams \
   -f name="Moderators" \
-  -f description="Trusted members who help with triage and admin" \
+  -f description="Trusted members who help with moderation, triage, and admin" \
   -f privacy="closed"
 ```
+
+**Note:** Since the repository is fully open (anyone can create issues/discussions), we only need the Moderators team for spam control and issue management. No Participants team is required.
 
 ## Step 3: Create Repository
 
@@ -122,9 +113,8 @@ gh repo create qr-plus-workgroup/qr-plus \
 
 1. Settings → Collaborators and teams
 2. **Add teams:**
-   - Add "Participants" team with **Write** role
    - Add "Moderators" team with **Maintain** role
-3. **Base permission:** Read (public can view, org members need team for write)
+3. **Base permission:** Read (anyone can view and create issues/discussions in public repos)
 
 ### Branch Protection (Optional but Recommended)
 
@@ -151,30 +141,35 @@ If you plan to have a main branch with documentation:
 2. Create the following categories:
 
 **Q&A** (Question/Answer format)
+
 - **Name:** Q&A
 - **Description:** Implementation questions and answers
 - **Format:** Question / Answer (enable answer marking)
 - **Emoji:** ❓
 
 **Troubleshooting** (Open discussion)
+
 - **Name:** Troubleshooting
 - **Description:** Help when you're stuck - we'll diagnose together
 - **Format:** Open-ended discussion
 - **Emoji:** 🚨
 
 **Use Cases** (Open discussion)
+
 - **Name:** Use Cases
 - **Description:** Share and discuss implementation scenarios
 - **Format:** Open-ended discussion
 - **Emoji:** 💼
 
 **General** (Open discussion)
+
 - **Name:** General
 - **Description:** Open-ended conversations about the standard
 - **Format:** Open-ended discussion
 - **Emoji:** 💬
 
 **Announcements** (Announcement format)
+
 - **Name:** Announcements
 - **Description:** Testing updates, spec releases, important information
 - **Format:** Announcement (maintainers only)
@@ -249,6 +244,7 @@ GitHub Projects (new) provides powerful project management.
 ### Create Views
 
 **Board View:**
+
 1. Add columns:
    - Backlog
    - Investigating
@@ -260,16 +256,19 @@ GitHub Projects (new) provides powerful project management.
 2. Group by: Status (use single-select field)
 
 **Table View:**
+
 - Shows all issues with all fields
 - Good for filtering and bulk operations
 
 **Roadmap View:**
+
 - Timeline visualization
 - Group by milestone
 
 ### Add Custom Fields
 
 1. **Status** (Single select)
+
    - Options: Backlog, Investigating, Confirmed - Standard Gap, Confirmed - Bug, In Progress, Resolved, Won't Fix
    - Used for board columns
 
@@ -293,6 +292,7 @@ If automation doesn't work as expected, the repository includes a GitHub Actions
 `.github/workflows/project-auto-add.yml`
 
 This requires:
+
 1. Creating a GitHub Personal Access Token (classic) with `repo` and `project` scopes
 2. Adding it as a repository secret named `GH_PROJECT_TOKEN`
 3. Updating the project URL in the workflow file
@@ -313,12 +313,14 @@ The repository includes several workflows that may need configuration.
 If you want issues automatically added to the project board:
 
 1. Create GitHub Personal Access Token:
+
    - GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
    - Generate new token
    - Scopes: `repo`, `project`
    - Copy token
 
 2. Add as repository secret:
+
    - Repository Settings → Secrets and variables → Actions
    - New repository secret
    - Name: `GH_PROJECT_TOKEN`
@@ -393,10 +395,10 @@ This is the official community hub for testing and validating whether the QR+ st
 
 ## How to get started
 
-1. **Join the workgroup:** Request access by [contact method]
-2. **Browse existing content:** Check [Discussions](../../discussions) and [Issues](../../issues)
-3. **Ask questions:** Start a [Discussion](../../discussions/new?category=q-a)
-4. **Report issues:** Use our [Issue Templates](../../issues/new/choose)
+1. **Browse existing content:** Check [Discussions](../../discussions) and [Issues](../../issues)
+2. **Ask questions:** Start a [Discussion](../../discussions/new?category=q-a)
+3. **Report issues:** Use our [Issue Templates](../../issues/new/choose)
+4. **Contribute:** Anyone can create issues and discussions - no membership required!
 
 ## Important resources
 
@@ -440,17 +442,20 @@ Go through this checklist to ensure everything is working:
 
 ## Post-Setup Tasks
 
-### Invite First Participants
+### Invite First Moderators
 
-1. Identify initial testers
-2. Invite to organization:
+1. Identify trusted community members to help with moderation
+2. Invite to organization and add to Moderators team:
    ```bash
+   # Invite to organization
    gh api orgs/qr-plus-workgroup/invitations \
      -f invitee_id={github_user_id} \
      -f role=direct_member \
-     -f team_ids[]={participants_team_id}
+     -f team_ids[]={moderators_team_id}
    ```
-3. Or via Web UI: Organization → People → Invite member
+3. Or via Web UI: Organization → People → Invite member, then add to Moderators team
+
+**Note:** Regular participants don't need organization membership - anyone can create issues and discussions in the public repository.
 
 ### Update Documentation Placeholders
 
@@ -517,16 +522,19 @@ If discussion categories don't appear:
 ### Regular Tasks
 
 **Weekly:**
+
 - Review new issues and apply labels
 - Answer questions in Discussions
 - Update project board
 
 **Monthly:**
+
 - Review stale issues
 - Update milestone progress
 - Post status updates in Announcements
 
 **Per Release:**
+
 - Create new milestone for next version
 - Update README with new versions
 - Close completed milestones

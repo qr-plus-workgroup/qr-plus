@@ -9,12 +9,14 @@ Thank you for participating in the QR+ Proof of Standard testing program! This d
 **→ [Start a Discussion in Q&A](../../discussions/new?category=q-a)**
 
 The Q&A category is perfect for:
+
 - "How do I implement X?"
 - "What's the correct way to Y?"
 - "Which approach should I use for Z?"
 - Understanding specification details
 
 **Tips for getting good answers:**
+
 - Be specific about what you're trying to accomplish
 - Include relevant code snippets or API calls
 - Mention the sandbox version you're using
@@ -26,11 +28,13 @@ The Q&A category is perfect for:
 **→ [Start a Discussion in Troubleshooting](../../discussions/new?category=troubleshooting)**
 
 The Troubleshooting category is for:
+
 - "I'm getting an error and don't know why"
 - "Something isn't working as expected"
 - "I'm not sure if this is a bug or my mistake"
 
 **Tips for effective troubleshooting:**
+
 - Describe what you expect to happen
 - Describe what's actually happening
 - Include error messages (full text)
@@ -64,10 +68,11 @@ See our [Contributing Guide](CONTRIBUTING.md) for detailed guidance on choosing 
 ### 📚 I need reference documentation
 
 **Resources:**
+
 - **This Repository:** Browse [Issues](../../issues) and [Discussions](../../discussions) for past Q&A
-- **Sandbox Demo:** [URL when available]
-- **API Documentation:** [URL when available]
-- **QR+ Specification:** [URL when available]
+- **Sandbox Demo:** [pdef-sim.com](https://pdef-sim.com/h)
+- **API Documentation:** [API Specs](https://pdef-sim.com/h?menu=doc-registry)
+- **SARB QR+ Specification:** [QR+ Master Specification](https://pdef-sim.com/h?menu=doc-qr-plus-master)
 
 ## Before Creating New Content
 
@@ -80,6 +85,7 @@ Before asking a question or reporting an issue:
 3. **Check [Project Board](../../projects)** - See what's in progress
 
 If you find something similar:
+
 - 👍 Use reactions to show you're affected
 - 💬 Add your specific details as a comment
 - 🔗 Reference it if creating related content
@@ -90,43 +96,20 @@ If you find something similar:
 - **Contributing Guide:** [Participation guidelines](CONTRIBUTING.md)
 - **CLAUDE.md:** [Repository structure and workflows](CLAUDE.md) (for AI assistants)
 
-## Request Access to Contribute
+## Contact for Support
 
-To create issues and discussions, you need to join the `qr-plus-workgroup` organization.
+If you need additional help beyond what's available in Discussions and Issues:
 
-**How to request access:**
-
-1. **Contact Method:** [Specify email, discussion link, or other contact method]
-2. **Provide Information:**
-   - Your GitHub username
-   - Your organization/affiliation
-   - Brief description of your use case or testing interest
-3. **Wait for invitation:** A moderator will review and invite you
-4. **Accept invitation:** Check your email and accept the GitHub org invitation
-5. **Start contributing:** You'll be added to the Participants team
-
-**Note:** You can view all content publicly without joining. Membership is only required to create issues and discussions.
-
-## Response Times
-
-This is a community-driven testing program with limited resources. Please be patient:
-
-- **Discussions:** We aim to respond within 2-3 business days
-- **Issues:** Triage typically happens within 1 week
-- **Complex issues:** May take longer to investigate and resolve
-
-**Urgency:** If something is blocking critical testing:
-1. Mark it as `priority: high` (or request this in the issue)
-2. Provide detailed context about the blocking impact
-3. We'll prioritize accordingly
+**Repository Owner:** Niel Bester
+**Moderators:** Niel Bester; Mari Few; Bheki Nzimande; Phomolo Moathodi
 
 ## Escalation
 
 If you're not getting the help you need:
 
 1. **First:** Add a comment requesting attention
-2. **Then:** Contact repository owner/moderator directly: [Contact info]
-3. **For urgent issues:** [Provide escalation contact if available]
+2. **Then:** Contact repository owner/moderator directly:
+3. **For urgent issues:** Escalate to the SARB QR+ Project team
 
 ## Community Support
 
@@ -136,29 +119,6 @@ The best way to get help quickly is to engage with the community:
 - **Help others** - Answer questions you know
 - **Mark helpful answers** - Help future users find solutions
 - **Share workarounds** - Document what worked for you
-
-## Code of Conduct
-
-All participants must follow our [Code of Conduct](CODE_OF_CONDUCT.md).
-
-**If you experience harassment or violations:**
-1. Do not engage
-2. Report to moderators/owners privately: [Contact method]
-3. Include screenshots/evidence if possible
-
-We take violations seriously and will take appropriate action.
-
-## Repository Owners & Moderators
-
-**Owner:** [Your name/contact]
-**Moderators:** [List when assigned]
-
-## Related Resources
-
-- **Main Repository:** [Link to SARB QR+ if applicable]
-- **Sandbox Environment:** [URL when available]
-- **Specification Document:** [URL when available]
-- **API Documentation:** [URL when available]
 
 ---
 

@@ -19,7 +19,7 @@ This is the **QR+ Proof of Standard Testing Repository** - a public GitHub repos
 **Organization:** `qr-plus-workgroup` (GitHub organization)
 **Repository:** `qr-plus` (public)
 **Local Path:** `/workspace/qr-plus/`
-**Access Model:** Public read, org members can contribute
+**Access Model:** Fully open - anyone can create issues/discussions
 
 **Related Resources:**
 - Private development repo: `/workspace/` (sarb-payref - NOT public)
@@ -202,20 +202,24 @@ When a Discussion reveals an actionable item:
 
 **Organization:** `qr-plus-workgroup`
 
+**Access Model:** Fully open community
+- **Anyone** can create issues, discussions, and comments (no org membership required)
+- **Public read access** to all repository content
+
 **Teams:**
-- **Participants** (Write access) - Default team for all contributors
-- **Moderators** (Maintain access) - Can manage issues, triage, invite new participants
+- **Moderators** (Maintain access) - Can manage issues, hide spam, block abusive users, set interaction limits
 
-**Onboarding Process:**
-1. Participant requests access (via email, discussion, or contact)
-2. Moderator verifies legitimacy
-3. Moderator invites to organization
-4. Participant auto-added to "Participants" team
-5. Participant can now create issues/discussions
+**Moderation:**
+- Moderators monitor for spam and abusive behavior
+- Can use GitHub's interaction limits if spam becomes problematic
+- Can temporarily restrict issue creation to established contributors if needed
+- Focus on building helpful, constructive community
 
-**Promotion to Moderator:**
-- Trusted, active participants can be promoted to help with admin overhead
-- Moderators can invite new participants and help with triage
+**Spam Protection:**
+- GitHub's built-in spam detection is active
+- Moderators can hide spam comments and lock issues
+- If spam becomes significant, can enable temporary interaction limits
+- Can convert to gated access model (require org membership) if necessary
 
 ## GitHub Commands
 
@@ -280,6 +284,6 @@ Repository configuration is managed through:
 | Purpose | Development & implementation | Community feedback & testing |
 | Audience | SARB team | Industry participants |
 | Content | Source code, API specs, sandbox | Issues, discussions, docs |
-| Access | Private | Public read, org write |
+| Access | Private | Fully public (anyone can contribute) |
 | Focus | Building the standard | Validating the standard |
 | CLAUDE.md | Dev workflows, architecture | Community management, triage |
