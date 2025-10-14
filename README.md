@@ -1,4 +1,4 @@
-# QR+ Payment Standard - Proof of Standard Testing
+# QR+ Proof of Standard Testing
 
 Welcome to the **QR+ Proof of Standard Testing Repository**! This is the official community feedback and support hub for validating whether the QR+ standard meets real-world use case requirements.
 

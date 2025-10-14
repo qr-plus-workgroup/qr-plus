@@ -76,7 +76,7 @@ gh api orgs/qr-plus-workgroup/teams \
 
 1. Go to organization → Repositories → New
 2. **Name:** `qr-plus`
-3. **Description:** "QR+ Payment Standard - Proof of Standard Testing & Community Feedback"
+3. **Description:** "QR+ Proof of Standard Testing & Community Feedback"
 4. **Visibility:** Public
 5. **Initialize:** Do not initialize (we'll push existing content)
 6. Create repository
@@ -87,7 +87,7 @@ gh api orgs/qr-plus-workgroup/teams \
 cd /workspace/qr-plus
 gh repo create qr-plus-workgroup/qr-plus \
   --public \
-  --description "QR+ Payment Standard - Proof of Standard Testing & Community Feedback" \
+  --description "QR+ Proof of Standard Testing & Community Feedback" \
   --source=. \
   --remote=origin
 ```
