@@ -22,7 +22,7 @@ Before creating new content, familiarize yourself with existing discussions and 
 
 - **[View Discussions](../../discussions)** - Browse Q&A and troubleshooting
 - **[View Issues](../../issues)** - See reported bugs and gaps
-- **[View Project Board](../../projects)** - Track issue progress
+- **[View Project Board](../../../orgs/qr-plus-workgroup/projects/2)** - Track issue progress
 
 ### 2. Choose Your Entry Point
 
